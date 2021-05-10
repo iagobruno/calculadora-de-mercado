@@ -40,10 +40,10 @@
   </div>
 
   {#if troco !== null}
-    <div class="summary__row troco">
-      <span>Troco</span>
+    <div class="summary__row troco" class:falta={troco < 0}>
+      <span>{troco >= 0 ? 'Troco' : 'Falta'}</span>
       <hr />
-      <span>{formatMoney(troco)}</span>
+      <span>{troco === 0 ? 'Sem troco' : formatMoney(Math.abs(troco))}</span>
     </div>
   {/if}
 
@@ -85,5 +85,12 @@
     font-weight: bold;
     font-size: 1em;
     margin-bottom: 6px;
+  }
+
+  .summary__row.troco.falta {
+    color: red;
+  }
+  .summary__row.troco.falta hr {
+    border-top-color: red;
   }
 </style>

@@ -11,8 +11,8 @@
     { id: 2, title: 'Requeijão', quantity: 2, price: 3.50 },
   ]
   let discount: Discount = null
-  let trocoPara: TrocoPara = 20
-  let divideBy: DivideBy = 5
+  let trocoPara: TrocoPara = null
+  let divideBy: DivideBy = 1
 
   function handleAddItem (event: CustomEvent<Item>) {
     const newItem = {
