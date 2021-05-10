@@ -4,21 +4,23 @@
   import Options from './components/Options.svelte'
   import Summary from './components/Summary.svelte'
   import type { Items, Item, Discount, TrocoPara, DivideBy } from './types'
-  // import { state } from './store'
+  import { state } from './store'
 
   // STATES
   let list: Items = [
-    { id: 1, title: 'Arroz', quantity: 1, price: 4.00 },
-    { id: 2, title: 'Requeijão', quantity: 2, price: 3.50 },
+    { id: '1', title: 'Arroz', quantity: 1, price: 4.00 },
+    { id: '2', title: 'Requeijão', quantity: 2, price: 3.50 },
   ]
   let discount: Discount = null
   let trocoPara: TrocoPara = null
   let divideBy: DivideBy = 1
 
-  function handleAddItem (event: CustomEvent<Item>) {
-    const newItem = {
-      ...event.detail,
-      id: list.length + 1,
+  function handleAddItem () {
+    const newItem: Item = {
+      id: Math.random().toString(36).substr(2, 9) + Date.now(),
+      title: 'Novo produto',
+      quantity: 1,
+      price: 0,
     }
     list = [...list, newItem]
   }
@@ -47,8 +49,9 @@
 <Header />
 
 <Table
-  {list}
+  bind:list
   on:newItem={handleAddItem}
+  on:removeItem={(evt) => handleRemoveItem(evt.detail)}
 />
 
 <hr />

@@ -40,3 +40,7 @@ export function calcTotal(list: Items, initialValue = 0): number {
 function isNumeric(value: string): boolean {
   return /^([0-9])+$/g.test(value)
 }
+
+export function removeLetters(str: string) {
+  return str.replace(/[^0-9\,\.]/gi, '')
+}
