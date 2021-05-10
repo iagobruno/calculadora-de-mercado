@@ -1,14 +1,12 @@
 <script lang="ts">
-  import type { Discount, Items, TrocoPara } from '../types'
   import { formatMoney, calcTotal, calcDiscount } from '../helpers'
+  import store from '../store'
 
-  // PROPS
-  export let list: Items = []
-  export let discount: Discount | null = 0
-  export let divideBy: number = 1
-  export let trocoPara: TrocoPara = null
+  $: list = $store.list
+  $: discount = $store.discount
+  $: divideBy = $store.divideBy
+  $: trocoPara = $store.trocoPara
 
-  // STATES
   $: subtotal = calcTotal(list)
   $: finalDiscount = calcDiscount(discount ?? 0, subtotal)
   $: total = subtotal - finalDiscount

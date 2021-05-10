@@ -1,10 +1,5 @@
 <script lang="ts">
-  import type { Discount, DivideBy, TrocoPara } from '../types'
-
-  // PROPS
-  export let trocoPara: TrocoPara = null
-  export let discount: Discount = null
-  export let divideBy: DivideBy = 1
+  import store from '../store'
 </script>
 
 <section class="options">
@@ -14,8 +9,8 @@
       <input
         type="number"
         id="discount-input"
-        bind:value={discount}
-        class:invalid={(discount ?? 0) < 0 || (discount ?? 0) > 100}
+        bind:value={$store.discount}
+        class:invalid={($store.discount ?? 0) < 0 || ($store.discount ?? 0) > 100}
         inputmode="numeric"
         placeholder="0"
         minlength="1"
@@ -33,8 +28,8 @@
       <input
         type="number"
         id="troco-para-input"
-        bind:value={trocoPara}
-        class:invalid={(trocoPara ?? 0) < 0}
+        bind:value={$store.trocoPara}
+        class:invalid={($store.trocoPara ?? 0) < 0}
         inputmode="numeric"
         placeholder="0,00"
         minlength="1"
@@ -48,7 +43,7 @@
     <span>
       <select
         id="divide-by-input"
-        on:input={(evt) => divideBy = Number(evt.currentTarget.value)}
+        bind:value={$store.divideBy}
       >
         <option value="1" default>Sem divisão</option>
         <option value="2">2 Pessoas</option>

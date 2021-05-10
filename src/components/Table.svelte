@@ -1,21 +1,6 @@
 <script lang="ts">
-  import type { Items, ItemWithoutId } from '../types'
-  import { createEventDispatcher } from 'svelte'
-  import { formatMoney, removeLetters } from '../helpers'
-
-  // PROPS
-  export let list: Items = []
-
-  const dispatch = createEventDispatcher()
-
-  function handleButtonClick () {
-    const newItem: ItemWithoutId = {
-      title: 'Biscoito',
-      quantity: 1,
-      price: 2.5
-    }
-    dispatch('newItem', newItem)
-  }
+  import { removeLetters } from '../helpers'
+  import store from '../store'
 </script>
 
 <section class="list">
@@ -28,7 +13,7 @@
     </thead>
 
     <tbody>
-      {#each list as item (item.id)}
+      {#each $store.list as item (item.id)}
         <tr id={item.id}>
           <td class="item__title">
             <span
@@ -57,14 +42,14 @@
           </td>
           <td
             class="action"
-            on:click={() => dispatch('removeItem', item.id)}
+            on:click={() => store.removeItem(item.id)}
           >❌</td>
         </tr>
       {/each}
     </tbody>
   </table>
 
-  <button on:click={handleButtonClick}>Adicionar produto</button>
+  <button on:click={store.addItem}>Adicionar produto</button>
 </section>
 
 <style>
