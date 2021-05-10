@@ -5,11 +5,13 @@
   // PROPS
   export let list: Items = []
   export let discount: Discount | null = 0
+  export let trocoPara: number | null = null
 
   // STATES
   $: subtotal = calcTotal(list)
   $: finalDiscount = calcDiscount(discount ?? 0, subtotal)
   $: total = subtotal - finalDiscount
+  $: troco = trocoPara === null ? null : trocoPara - total
 </script>
 
 <section class="summary">
@@ -34,6 +36,15 @@
     <hr />
     <span>{formatMoney(total)}</span>
   </div>
+
+  {#if troco !== null}
+    <div class="summary__row troco">
+      <span>Troco</span>
+      <hr />
+      <span>{formatMoney(troco)}</span>
+    </div>
+  {/if}
+
 </section>
 
 <style>
