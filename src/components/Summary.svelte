@@ -1,11 +1,16 @@
 <script lang="ts">
-  import type { Items } from '../types'
-  import { formatMoney, calcTotal, calcPercentage } from '../helpers'
+  import type { Discount, Items } from '../types'
+  import { formatMoney, calcTotal, calcDiscount } from '../helpers'
 
   // PROPS
   export let list: Items = []
+  export let discount: Discount | null = 0
+
   // STATES
   $: subtotal = calcTotal(list)
+  $: finalDiscount = calcDiscount(discount ?? 0, subtotal)
+  $: total = subtotal - finalDiscount
+</script>
 
 <section class="summary">
   {#if subtotal !== total}
@@ -16,6 +21,13 @@
     </div>
   {/if}
 
+  {#if finalDiscount > 0}
+    <div class="summary__row discount">
+      <span>Disconto</span>
+      <hr />
+      <span>{formatMoney(finalDiscount)}</span>
+    </div>
+  {/if}
 
   <div class="summary__row total">
     <span>Total</span>
