@@ -6,19 +6,24 @@ export function formatMoney(value: number) {
   return moneyFormatter.format(value)
 }
 
-export function calcDiscount(discount: Discount, total: number): number {
-  if (typeof discount === 'number') {
-    return discount
+export function calcDiscount(discount: number, total: number): number {
+  if (discount === null) {
+    return 0
   }
-  if (isNumeric(discount)) {
-    return Number(discount)
-  }
-  if (discount.endsWith('%')) {
-    const parsedDiscount = Number(discount.split('%')[0])
-    return calcPercentage(parsedDiscount, total)
-  }
-  // @ts-ignore
-  return discount as number
+  return calcPercentage(discount, total)
+
+  // if (typeof discount === 'number') {
+  //   return discount
+  // }
+  // if (isNumeric(discount)) {
+  //   return Number(discount)
+  // }
+  // if (discount.endsWith('%')) {
+  //   const parsedDiscount = Number(discount.split('%')[0])
+  //   return calcPercentage(parsedDiscount, total)
+  // }
+  // // @ts-ignore
+  // return discount as number
 }
 
 export function calcPercentage(percentage: number, value: number): number {

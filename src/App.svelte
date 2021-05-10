@@ -1,6 +1,7 @@
 <script lang="ts">
   import Header from './components/Header.svelte'
   import Table from './components/Table.svelte'
+  import Options from './components/Options.svelte'
   import Summary from './components/Summary.svelte'
   import type { Items, Item, Discount, TrocoPara, DivideBy } from './types'
   // import { state } from './store'
@@ -52,14 +53,20 @@
 
 <hr />
 
+<Options
+  bind:discount
+  bind:trocoPara
+  bind:divideBy
+/>
+
+<hr />
+
 <Summary
   {list}
   {discount}
   {trocoPara}
   {divideBy}
 />
-
-<hr />
 
 <button
   on:click={handleCleanList}
