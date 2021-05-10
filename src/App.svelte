@@ -1,6 +1,7 @@
 <script lang="ts">
   import Header from './components/Header.svelte'
   import Table from './components/Table.svelte'
+  import Summary from './components/Summary.svelte'
   import type { Items, Item } from './types'
   // import { state } from './store'
 
@@ -42,4 +43,8 @@
   {list}
   on:newItem={handleAddItem}
 />
+
+<hr />
+
+<Summary {list} />
 
