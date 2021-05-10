@@ -28,7 +28,7 @@
     </thead>
 
     <tbody>
-      {#each list as item (item.title)}
+      {#each list as item (item.id)}
         <tr>
           <td>{item.title}</td>
           <td>{item.quantity}</td>
