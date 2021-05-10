@@ -104,5 +104,8 @@
     border: 1px solid #999;
     border-radius: 4px;
     padding: 3px 3px;
+    font-size: 0.8em;
+    font-style: inherit;
+    color: inherit;
   }
 </style>

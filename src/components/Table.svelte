@@ -33,7 +33,7 @@
           <td>{item.title}</td>
           <td>{item.quantity}</td>
           <td>{formatMoney(item.price)}</td>
-          <td>X</td>
+          <td>❌</td>
         </tr>
       {/each}
     </tbody>
@@ -52,6 +52,7 @@
   thead,
   th {
     text-align: left;
+    font-size: 0.94em;
   }
 
   thead th:first-child,
