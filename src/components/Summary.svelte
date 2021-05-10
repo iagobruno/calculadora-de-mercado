@@ -5,12 +5,14 @@
   // PROPS
   export let list: Items = []
   export let discount: Discount | null = 0
+  export let divideBy: number = 1
   export let trocoPara: number | null = null
 
   // STATES
   $: subtotal = calcTotal(list)
   $: finalDiscount = calcDiscount(discount ?? 0, subtotal)
   $: total = subtotal - finalDiscount
+  $: totalDivided = total / divideBy
   $: troco = trocoPara === null ? null : trocoPara - total
 </script>
 
@@ -45,6 +47,13 @@
     </div>
   {/if}
 
+  {#if divideBy > 1}
+    <div class="summary__row">
+      <span>Total dividido por {divideBy}</span>
+      <hr />
+      <span>{formatMoney(totalDivided)}</span>
+    </div>
+  {/if}
 </section>
 
 <style>
