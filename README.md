@@ -1,6 +1,14 @@
 # calculadora-de-mercado
 
-[![Acessar Web App](https://img.shields.io/badge/Acessar Web App-brightgreen.svg)](https://calculadora-de-mercado.vercel.app/)
+[![Acessar Web App](https://img.shields.io/badge/Acessar%20Web%20App-brightgreen.svg)](https://calculadora-de-mercado.vercel.app/)
+
+## Tech stack
+
+- [Vite](https://vitejs.dev/)
+- [Svelte](https://svelte.dev/)
+- [TypeScript](http://typescriptlang.org/)
+- [Workbox](https://developers.google.com/web/tools/workbox)
+- PWA stuff...
 
 ## Getting started
 
