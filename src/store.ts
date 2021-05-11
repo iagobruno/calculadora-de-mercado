@@ -9,10 +9,7 @@ interface State {
 }
 
 const initialState: State = {
-  list: [
-    { id: '1', title: 'Arroz', quantity: 1, price: 4.00 },
-    { id: '2', title: 'Requeijão', quantity: 2, price: 3.50 },
-  ],
+  list: [],
   discount: null,
   trocoPara: null,
   divideBy: 1,

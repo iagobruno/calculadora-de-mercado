@@ -1,8 +1,8 @@
 html,
 body {
   position: relative;
-  width: -webkit-fill-available;
-  height: 100vh;
+  min-width: -webkit-fill-available;
+  min-height: 100vh;
 }
 
 * {
