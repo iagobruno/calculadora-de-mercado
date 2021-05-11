@@ -4,5 +4,5 @@ self.__WB_DISABLE_DEV_LOGS = true
 
 workbox.precaching.precacheAndRoute([
   '/',
-  ...self.__WB_MANIFEST
+  ...(self.__WB_MANIFEST ?? [])
 ])
