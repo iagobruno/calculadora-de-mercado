@@ -42,5 +42,5 @@ function isNumeric(value: string): boolean {
 }
 
 export function removeLetters(str: string) {
-  return str.replace(/[^0-9\,\.]/gi, '')
+  return str.replace(/\,/g, '.').replace(/[^0-9\.]/gi, '')
 }

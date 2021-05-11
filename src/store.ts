@@ -1,6 +1,5 @@
 import { writable } from 'svelte/store'
 import type { Items, Discount, TrocoPara, DivideBy, Item } from './types'
-import deepClone from 'clone-deep'
 
 interface State {
   list: Items,
@@ -20,7 +19,13 @@ const initialState: State = {
 }
 
 function createStore() {
-  const { subscribe, set, update } = writable<State>(initialState)
+  const { subscribe, set, update } = writable<State>(
+    JSON.parse(localStorage.getItem('data')!) ?? initialState
+  )
+
+  subscribe(state => {
+    localStorage.setItem('data', JSON.stringify(state))
+  })
 
   return {
     subscribe,
