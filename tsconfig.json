@@ -3,6 +3,10 @@
     "moduleResolution": "node",
     "target": "esnext",
     "module": "esnext",
+    "lib": [
+      "esnext",
+      "webworker",
+    ],
     "strict": true,
     "noImplicitAny": false,
     "noUnusedLocals": false,
@@ -13,7 +17,7 @@
      * `import type` instead of `import` for Types.
      */
     "importsNotUsedAsValues": "error",
-    "isolatedModules": true,
+    // "isolatedModules": true,
     "resolveJsonModule": true,
     /**
      * To have warnings / errors of the Svelte compiler at the

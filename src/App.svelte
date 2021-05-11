@@ -6,7 +6,6 @@
   import store from './store'
 </script>
 
-
 <Header />
 
 <Table />
